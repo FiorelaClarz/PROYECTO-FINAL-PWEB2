@@ -72,7 +72,17 @@ def hacer_pedido(request):
                     producto = get_object_or_404(Crema, pk=item['id'])
                     pedido.cremas.add(producto)
             request.session['carrito'] = []
-            return render(request, 'pedidos/confirmacion_pedido.html', {'pedido': pedido})
+            return render(request, 'confirmacion_pedido.html', {'pedido': pedido})
+    else:
+        form = PedidoForm()
+
+    total = sum(
+        get_object_or_404(Pollo, pk=item['id']).precio if item['tipo'] == 'pollo' else
+        get_object_or_404(Bebida, pk=item['id']).precio if item['tipo'] == 'bebida' else
+        get_object_or_404(Papa, pk=item['id']).precio for item in carrito
+    )
+
+    return render(request, 'hacer_pedido.html', {'form': form, 'carrito': carrito, 'total': total})
 
 def crear_pollo(request):
     if request.method == 'POST':
