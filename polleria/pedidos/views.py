@@ -123,3 +123,19 @@ def crear_papa(request):
     else:
         form = PapaForm()
     return render(request, 'crear_papa.html', {'form': form})
+
+from rest_framework import viewsets
+from .models import Pollo, Bebida, Papa
+from .serializers import PolloSerializer, BebidaSerializer, PapaSerializer
+
+class PolloViewSet(viewsets.ModelViewSet):
+    queryset = Pollo.objects.filter(disponible=True)
+    serializer_class = PolloSerializer
+
+class BebidaViewSet(viewsets.ModelViewSet):
+    queryset = Bebida.objects.filter(disponible=True)
+    serializer_class = BebidaSerializer
+
+class PapaViewSet(viewsets.ModelViewSet):
+    queryset = Papa.objects.all()
+    serializer_class = PapaSerializer
