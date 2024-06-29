@@ -11,7 +11,7 @@ class Papa(models.Model):
 
 class Pollo(models.Model):
     codigo = models.AutoField(primary_key=True)
-    cantidad = models.IntegerField()
+    cantidad = models.CharField(max_length=100)
     precio = models.DecimalField(max_digits=6, decimal_places=2)
     parte = models.CharField(max_length=100)
     disponible = models.BooleanField(default=True)
