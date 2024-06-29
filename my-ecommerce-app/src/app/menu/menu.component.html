@@ -1,4 +1,18 @@
 <p>menu works!</p>
 <h1>Hoola desde Menu</h1>
-
+<div class="products">
+    <div *ngFor="let product of products" class="product-card">
+      <img [src]="product.image" alt="{{ product.name }}">
+      <div class="product-info">
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <div class="product-pricing">
+          <span class="price">${{ product.price }}</span>
+          <span *ngIf="product.discount_price" class="discount-price">${{ product.discount_price }}</span>
+        </div>
+        <button>Add</button>
+      </div>
+    </div>
+  </div>
+  
 <a routerLink="/home">Regresar</a>
