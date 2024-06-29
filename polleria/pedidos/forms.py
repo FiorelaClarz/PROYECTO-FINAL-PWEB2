@@ -1,5 +1,10 @@
 from django import forms
-from .models import Pollo, Bebida, Crema, Papa
+from .models import Pollo, Bebida, Crema, Papa, Pedido
+
+class PedidoForm(forms.ModelForm):
+    class Meta:
+        model = Pedido
+        fields = ['direccion', 'cubiertos', 'pagoRealizado']
 class PolloForm(forms.ModelForm):
     class Meta:
         model = Pollo
