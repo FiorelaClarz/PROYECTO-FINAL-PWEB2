@@ -1,10 +1,48 @@
-from django.shortcuts import render, redirect
-
+from django.shortcuts import render, get_object_or_404, redirect
+from .forms import PolloForm, BebidaForm, CremaForm, PapaForm
+from .models import Pollo, Bebida, Papa, Crema, Pedido
 # Create your views here.
 def home(request):
-    return render(request, 'home.html');
+    pollos = Pollo.objects.filter(disponible=True)
+    bebidas = Bebida.objects.filter(disponible=True)
+    papas = Papa.objects.all()
+    return render(request, 'home.html', {'pollos': pollos, 'bebidas': bebidas, 'papas': papas});
 
-from .forms import PolloForm, BebidaForm, CremaForm, PapaForm
+def detalle_producto(request, producto_id, producto_tipo):
+    if producto_tipo == 'pollo':
+        producto = get_object_or_404(Pollo, pk=producto_id)
+    elif producto_tipo == 'bebida':
+        producto = get_object_or_404(Bebida, pk=producto_id)
+    elif producto_tipo == 'papa':
+        producto = get_object_or_404(Papa, pk=producto_id)
+    else:
+        return redirect('home')
+
+    pollos = Pollo.objects.filter(disponible=True)
+    bebidas = Bebida.objects.filter(disponible=True)
+    papas = Papa.objects.all()
+    cremas = Crema.objects.filter(disponible=True)
+    
+    carrito = request.session.get('carrito', [])
+
+    if request.method == 'POST':
+        accion = request.POST.get('accion')
+        producto_carrito = {'id': producto_id, 'tipo': producto_tipo}
+        if accion == 'add':
+            carrito.append(producto_carrito)
+        elif accion == 'remove':
+            carrito = [item for item in carrito if not (item['id'] == producto_id and item['tipo'] == producto_tipo)]
+        request.session['carrito'] = carrito
+        return redirect('detalle_producto', producto_id=producto_id, producto_tipo=producto_tipo)
+
+    return render(request, 'pedidos/detalle_producto.html', {
+        'producto': producto,
+        'pollos': pollos,
+        'bebidas': bebidas,
+        'papas': papas,
+        'cremas': cremas,
+        'carrito': carrito,
+    })
 
 def crear_pollo(request):
     if request.method == 'POST':
