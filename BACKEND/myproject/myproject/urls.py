@@ -17,7 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# static
+from django.conf import settings
+from django.conf.urls.static import static
+
+# from myproject.myapp.views import product_list
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myapp.urls')),
-]
+    # path('api/products/', product_list, name='product-list'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -17,6 +17,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -61,7 +62,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 # En producción, debes especificar los dominios permitidos
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:4200',
-    'https://tu-dominio.com',
+    # 'https://tu-dominio.com',
 ]
 
 ROOT_URLCONF = 'myproject.urls'
