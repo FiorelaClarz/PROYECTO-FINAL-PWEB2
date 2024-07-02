@@ -14,6 +14,7 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
 import { ReservaComponent } from './reserva/reserva.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
+
 export const appConfig: ApplicationConfig = {
   // providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration()]
   providers: [

@@ -10,7 +10,7 @@
           <span class="price">${{ product.price }}</span>
           <span *ngIf="product.discount_price" class="discount-price">${{ product.discount_price }}</span>
         </div>
-        <button>Add</button>
+        <button (click)="addToCart(product.id)">Add</button>
       </div>
     </div>
   </div>

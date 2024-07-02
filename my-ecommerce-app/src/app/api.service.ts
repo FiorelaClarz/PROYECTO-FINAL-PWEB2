@@ -27,4 +27,16 @@ export class ApiService {
   getProducts(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/products/`);
   }
+
+  addToCart(productId: number, quantity: number = 1): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/cart/add/`, { product_id: productId, quantity });
+  }
+
+  removeFromCart(productId: number): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/cart/remove/`, { product_id: productId });
+  }
+
+  getCart(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/cart/`);
+  }
 }
