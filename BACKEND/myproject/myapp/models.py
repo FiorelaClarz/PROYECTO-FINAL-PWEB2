@@ -1,5 +1,47 @@
 from django.db import models
 
+# from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group, Permission
+
+
+# ********************RESERVA************************
+class Table(models.Model):
+    number = models.IntegerField(unique=True)
+    seats = models.IntegerField()
+    status = models.CharField(max_length=10, default='available')
+
+    def __str__(self):
+        return f"Table {self.number}"
+
+class Reservation(models.Model):
+    table = models.ForeignKey(Table, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    date = models.DateTimeField()
+    status = models.CharField(max_length=10, default='pending')
+
+    def __str__(self):
+        return f"Reservation for {self.name} at {self.date}"
+    
+# ****************************************************
+
+class CustomUser(AbstractUser):
+    groups = models.ManyToManyField(
+        Group,
+        related_name='custom_user_set',  # Cambiar el related_name para evitar conflicto
+        blank=True,
+        help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
+        related_query_name='user',
+    )
+    user_permissions = models.ManyToManyField(
+        Permission,
+        related_name='custom_user_set',  # Cambiar el related_name para evitar conflicto
+        blank=True,
+        help_text='Specific permissions for this user.',
+        related_query_name='user',
+    )
+
+
+
 class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
