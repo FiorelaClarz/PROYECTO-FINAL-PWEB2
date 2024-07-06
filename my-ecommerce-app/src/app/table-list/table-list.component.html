@@ -1,0 +1,12 @@
+<p>table-list works!</p>
+
+  <div class="table-list-container">
+    <p class="header">Table List</p>
+    <div *ngFor="let table of tables" class="table-item">
+      <p>Número de mesa: {{ table.number }} - Cantidad de asientos: {{ table.seats }} - Estado: {{ table.status }}</p>
+      <button (click)="selectTable(table)" [disabled]="table.status !== 'available'">Reservar</button>
+    </div>
+    <app-reservation-form *ngIf="selectedTable" [table]="selectedTable" (reservationMade)="selectedTable.status = 'occupied'"></app-reservation-form>
+    <a routerLink="/home">Regresar</a>
+  </div>
+  

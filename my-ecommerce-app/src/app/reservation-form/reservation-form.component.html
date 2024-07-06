@@ -1,0 +1,14 @@
+<p>reservation-form works!</p>
+
+<div *ngIf="table" class="reservation-form-container">
+  <h2>Reservación de Mesa N° {{ table.number }}</h2>
+  <form (ngSubmit)="makeReservation()">
+    <label for="name">Nombres:</label>
+    <input type="text" id="name" [(ngModel)]="reservation.name" name="name" required>
+    <br>
+    <label for="date">Fecha y hora:</label>
+    <input type="datetime-local" id="date" [(ngModel)]="reservation.date" name="date" required>
+    <br>
+    <button type="submit">Reservar Mesa</button>
+  </form>
+</div>

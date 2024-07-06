@@ -1,8 +1,8 @@
-:root {
+/* :root {
     --primary-color: #39201f;
     --secondary-color: #EB4E20;
     --accent-color: #FDF4E9;
-  }
+  } */
 
 .navbar {
     display: flex;

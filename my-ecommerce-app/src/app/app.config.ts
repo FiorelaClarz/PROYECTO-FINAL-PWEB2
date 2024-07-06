@@ -13,10 +13,13 @@ import { OrderConfirmationComponent } from './order-confirmation/order-confirmat
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { ReservaComponent } from './reserva/reserva.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { TableListComponent } from './table-list/table-list.component';
+import { ReservationFormComponent } from './reservation-form/reservation-form.component';
 
 
 export const appConfig: ApplicationConfig = {
-  // providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration()]
   providers: [
     provideRouter([
       {path: 'home', component:  HomeComponent},
@@ -29,8 +32,13 @@ export const appConfig: ApplicationConfig = {
       {path: 'order-history', component: OrderHistoryComponent},
       {path: 'reserva', component: ReservaComponent},
       {path: 'user-profile', component: UserProfileComponent},
+      {path: 'login', component: LoginComponent},
+      {path: 'register', component: RegisterComponent},
+      {path: 'reserve', component: ReservationFormComponent},
+      {path: 'tables', component: TableListComponent},
       {path: '', redirectTo: '/home', pathMatch: 'full'},
     ]),
   ],
 
 };
+

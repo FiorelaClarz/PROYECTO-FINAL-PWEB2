@@ -39,4 +39,12 @@ export class ApiService {
   getCart(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/cart/`);
   }
+  getTables(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/tables/`);
+  }
+
+  // Método para hacer una reserva
+  makeReservation(reservation: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/reservations/`, reservation);
+  }
 }

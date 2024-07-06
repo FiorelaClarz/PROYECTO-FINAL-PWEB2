@@ -1,0 +1,66 @@
+/* Contenedor principal para el formulario de reserva */
+.reservation-form-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+  }
+
+  h1 {
+    color: pink;
+  }
+  
+  /* Encabezado del formulario */
+  .reservation-form-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Estilos para el formulario */
+  .reservation-form-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Estilos para las etiquetas */
+  .reservation-form-container label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Estilos para los campos de entrada */
+  .reservation-form-container input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Estilos para el botón de enviar */
+  .reservation-form-container button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .reservation-form-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
