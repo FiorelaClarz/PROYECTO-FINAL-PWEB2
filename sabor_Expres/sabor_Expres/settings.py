@@ -79,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'res.wsgi.application'
+WSGI_APPLICATION = 'sabor_Expres.wsgi.application'
 
 
 # Database
