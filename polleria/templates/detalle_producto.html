@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ producto_nombre }}</title>
+</head>
+<body>
+    <h1>{{ producto_nombre }}</h1>
+    <p>Precio: ${{ producto.precio }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="accion" value="add">
+        <button type="submit">Añadir al carrito</button>
+    </form>
+
+    <h2>Carrito de Compras</h2>
+    <ul>
+        {% for item in carrito %}
+        <li>
+            {{ item.id }} - {{ item.tipo }}
+            <form method="post" style="display:inline;">
+                {% csrf_token %}
+                <input type="hidden" name="accion" value="remove">
+                <button type="submit">Eliminar</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'hacer_pedido' %}">Hacer Pedido</a>
+
+    <h2>Otros Productos</h2>
+    <ul>
+        {% for pollo in pollos %}
+        <li>{{ pollo.parte }} - {{ pollo.cantidad }} unidades - ${{ pollo.precio }}</li>
+        {% endfor %}
+        {% for bebida in bebidas %}
+        <li>{{ bebida.tipo }} - {{ bebida.cantidad }} unidades - ${{ bebida.precio }}</li>
+        {% endfor %}
+        {% for papa in papas %}
+        <li>{{ papa.porcion }} - ${{ papa.precio }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
