@@ -28,16 +28,6 @@ class ReservationSerializer(serializers.ModelSerializer):
 # **************************************************
 
 
-# class UserSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = CustomUser
-#         fields = ('id', 'username', 'password')
-#         extra_kwargs = {'password': {'write_only': True}}
-
-#     def create(self, validated_data):
-#         user = CustomUser.objects.create_user(**validated_data)
-#         return user
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
@@ -59,47 +49,4 @@ class LoginSerializer(serializers.Serializer):
         if user and user.is_active:
             return user
         raise serializers.ValidationError("Invalid credentials")
-        # user = authenticate(**data)
-        # if user and user.is_active:
-        #     return user
-        # raise serializers.ValidationError("Invalid Credentials")
-
-# class UserSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = get_user_model()
-#         fields = ('id', 'username', 'password')
-#         extra_kwargs = {'password': {'write_only': True}}
-
-#     def create(self, validated_data):
-#         user = get_user_model().objects.create_user(**validated_data)
-#         return user
-    
-# class LoginSerializer(serializers.Serializer):
-#     username = serializers.CharField()
-#     password = serializers.CharField()
-
-#     def validate(self, data):
-#         user = authenticate(**data)
-#         if user and user.is_active:
-#             return user
-#         raise serializers.ValidationError("Invalid Credentials")
-    
-# class UserSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = User
-#         fields = ('id', 'username', 'password')
-#         extra_kwargs = {'password': {'write_only': True}}
-
-#     def create(self, validated_data):
-#         user = User.objects.create_user(**validated_data)
-#         return user
-
-# class LoginSerializer(serializers.Serializer):
-#     username = serializers.CharField()
-#     password = serializers.CharField()
-
-#     def validate(self, data):
-#         user = AuthenticationError(**data)
-#         if user and user.is_active:
-#             return user
-#         raise serializers.ValidationError("Invalid Credentials")
+     

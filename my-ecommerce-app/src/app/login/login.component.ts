@@ -54,37 +54,5 @@ export class LoginComponent {
         console.error('Logout error', error);
       });
   }
-  // username: string = '';
-  // password: string = '';
-
-  // constructor(private authService: AuthService) { }
-
-  // onSubmit(): void {
-  //   this.authService
-  //     .login({ username: this.username, password: this.password })
-  //     .subscribe(
-  //       (response) => {
-  //         console.log(response);
-  //         // Maneja la respuesta exitosa aquí
-  //       },
-  //       (error) => {
-  //         console.error('Error de autenticación', error);
-  //         // Maneja el error de autenticación aquí
-  //       }
-  //     );
-  // }
-    // onSubmit(): void {
-  //   this.authService.login({ username: this.username, password: this.password }).subscribe(
-  //     response => {
-  //       console.log(response);
-  //       localStorage.setItem('accessToken', response.access);
-  //       localStorage.setItem('refreshToken', response.refresh);
-  //       this.router.navigate(['/home']);
-  //     },
-  //     error => {
-  //       console.error(error);
-  //       alert('Invalid username or password');
-  //     }
-  //   );
-}
+  }
 }

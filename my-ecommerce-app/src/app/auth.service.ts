@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -19,7 +19,8 @@ export class AuthService {
     return this.http.post<any>(`${this.baseUrl}/login/`, credentials);
   }
 
-  logout(refreshToken: string): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/logout/`, { refresh: refreshToken });
+  logout(refreshToken: string, accessToken: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${accessToken}`);
+    return this.http.post<any>(`${this.baseUrl}/logout/`, { refresh: refreshToken }, { headers });
   }
 }
