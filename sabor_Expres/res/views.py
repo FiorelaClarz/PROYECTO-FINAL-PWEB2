@@ -295,24 +295,27 @@ def user_login_view(request):
 @require_http_methods(["POST"])
 def crear_producto(request):
     try:
-        data = json.loads(request.body)
-        nombre = data.get('nombre')
-        descripcion = data.get('descripcion', '')
-        precio = data.get('precio')
-        categoria_id = data.get('categoria_id')
-        imagen_url = data.get('imagen_url', '')
+        # Verificar si es una solicitud multipart/form-data
+        if request.content_type.startswith('multipart/form-data'):
+            nombre = request.POST.get('nombre')
+            descripcion = request.POST.get('descripcion', '')
+            precio = request.POST.get('precio')
+            categoria_id = request.POST.get('categoria_id')
+            imagen = request.FILES.get('imagen')  # Obtener el archivo de imagen
 
-        categoria = Categoria.objects.get(id=categoria_id) if categoria_id else None
+            categoria = Categoria.objects.get(id=categoria_id) if categoria_id else None
 
-        producto = Producto.objects.create(
-            nombre=nombre,
-            descripcion=descripcion,
-            precio=precio,
-            categoria=categoria,
-            imagen_url=imagen_url
-        )
+            producto = Producto.objects.create(
+                nombre=nombre,
+                descripcion=descripcion,
+                precio=precio,
+                categoria=categoria,
+                imagen=imagen  # Guardar la imagen
+            )
 
-        return JsonResponse({'mensaje': 'Producto creado exitosamente', 'producto_id': producto.id}, status=201)
+            return JsonResponse({'mensaje': 'Producto creado exitosamente', 'producto_id': producto.id}, status=201)
+        else:
+            return JsonResponse({'error': 'Tipo de contenido no soportado'}, status=400)
     except Categoria.DoesNotExist:
         return JsonResponse({'error': 'Categoría no encontrada'}, status=400)
     except Exception as e:
