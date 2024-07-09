@@ -13,8 +13,7 @@ interface Producto {
   descripcion: string;
   precio: string;
   categoria: string | null;
-  imagen_url: string | null;
-  cantidad: number;  // Añadir cantidad aquí
+  imagen: string | null;
 }
 
 @Component({
