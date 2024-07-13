@@ -13,7 +13,7 @@ interface Productos {
   descripcion: string;
   precio: string;
   categoria: string | null;
-  imagen_url: string | null;
+  imagen: string | null;
 }
 
 @Component({

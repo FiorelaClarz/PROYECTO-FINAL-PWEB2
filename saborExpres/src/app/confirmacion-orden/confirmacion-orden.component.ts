@@ -250,7 +250,7 @@ export class ConfirmacionOrdenComponent implements OnInit {
       const base64data = reader.result?.toString().split(',')[1];
   
       if (base64data) {
-        const email = 'incajherson@gmail.com'; // Reemplaza con el email del cliente
+        const email = 'fquispequ@unsa.edu.pe'; // Reemplaza con el email del cliente
   
         this.apiService.enviarBoleta(email, base64data).subscribe(
           response => {

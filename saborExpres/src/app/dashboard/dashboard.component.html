@@ -1,7 +1,6 @@
-<!-- dashboard.component.html -->
-<div>
+  <div>
     <h1>Dashboard de Productos</h1>
-  
+
     <form [formGroup]="productoForm" (ngSubmit)="crearProducto()">
       <div>
         <label for="nombre">Nombre:</label>
@@ -22,12 +21,12 @@
         </select>
       </div>
       <div>
-        <label for="imagen_url">URL de la imagen:</label>
-        <input id="imagen_url" formControlName="imagen_url" />
+        <label for="imagen">Imagen:</label>
+        <input type="file" id="imagen" (change)="onFileSelected($event)" />
       </div>
       <button type="submit">Crear Producto</button>
     </form>
-  
+
     <h2>Lista de Productos</h2>
     <ul>
       <li *ngFor="let producto of productos">
@@ -36,4 +35,3 @@
       </li>
     </ul>
   </div>
-  

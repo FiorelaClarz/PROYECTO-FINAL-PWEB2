@@ -2,10 +2,10 @@
     <h1>Carrito</h1>
     <ul class="product-list">
       <li *ngFor="let producto of productos" class="product-item">
-        <div *ngIf="producto.imagen_url">
-          <img [src]="'http://127.0.0.1:8000/static/' + producto.imagen_url" alt="{{ producto.nombre }}" class="product-image">
+        <div *ngIf="producto.imagen">
+          <img [src]="'http://127.0.0.1:8000/'+ producto.imagen" alt="{{ producto.nombre }}" class="product-image">
         </div>
-        <div *ngIf="!producto.imagen_url">
+        <div *ngIf="!producto.imagen">
           <p>Nombre: {{ producto.nombre }}</p>
           <p>No Image Available</p>
         </div>
